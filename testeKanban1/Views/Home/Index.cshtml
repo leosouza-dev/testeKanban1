@@ -1,0 +1,102 @@
+﻿@model IEnumerable<testeKanban1.Models.Item>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="container">
+
+
+        <a class="btn btn-warning mb-3" asp-controller="Items" asp-action="Create">Novo Item</a>
+
+        <div style="display:flex; justify-content: space-between;">
+            <div>
+                <table class="mr-5 table">
+                    <tr class="bg-primary">
+                        <td>ToDo</td>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @if ((int)item.Status == 1)
+                            {
+                                <td>
+                                    <a asp-controller="Items" asp-action="Edit" asp-route-id="@item.Id">
+                                        @Html.DisplayFor(modelItem => item.Title)
+                                    </a>
+                                </td>
+                            }
+                        </tr>
+                    }
+                </table>
+            </div>
+
+            <div>
+                <table class="mr-5 table" id="TableToDo">
+                    <thead>
+                        <tr class="bg-info">
+                            <td>Doing</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @if ((int)item.Status == 2)
+                            {
+                                <td>
+                                    <a asp-controller="Items" asp-action="Edit" asp-route-id="@item.Id">
+                                        @Html.DisplayFor(modelItem => item.Title)
+                                    </a>
+                                </td>
+                            }
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                <table class="mr-5 table">
+                    <tr class="bg-danger">
+                        <td>Testing</td>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @if ((int)item.Status == 3)
+                            {
+                                <td>
+                                    <a asp-controller="Items" asp-action="Edit" asp-route-id="@item.Id">
+                                        @Html.DisplayFor(modelItem => item.Title)
+                                    </a>
+                                </td>
+                            }
+                        </tr>
+                    }
+                </table>
+            </div>
+
+            <div>
+                <table class="mr-5 table">
+                    <tr class="bg-success">
+                        <td>Done</td>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @if ((int)item.Status == 4)
+                            {
+                                <td>
+                                    <a asp-controller="Items" asp-action="Edit" asp-route-id="@item.Id">
+                                        @Html.DisplayFor(modelItem => item.Title)
+                                    </a>
+                                </td>
+                            }
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+    </div>
